@@ -7,24 +7,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 
-import DAO.DaoFactory;
-import DAOHibernateJPA.RolDAOHibernateJPA;
 import DAO_Interfaces.RolDAO;
 
 public class RolDAOTest {
 	private static RolDAO rolDAO = DaoFactory.getRolDAO();
 	private static Rol rolNuevo;
 	private static Rol rolAModificar;
-	
-	@BeforeAll
-    static void setUp() {
-        // Crear un rol de prueba que será modificado en otras pruebas
-        rolAModificar = new Rol("USUARIO");
-        rolDAO.persistir(rolAModificar);
-    }
 
+	@BeforeAll
+	static void setUp() {
+		// Crear un rol de prueba que será modificado en otras pruebas
+		rolAModificar = new Rol("USUARIO");
+		rolDAO.persistir(rolAModificar);
+	}
 
 	@Test
 	public void testCrearRol() {
@@ -33,7 +29,7 @@ public class RolDAOTest {
 		rolDAO.persistir(rolNuevo);
 		Rol rolDevuelto = rolDAO.obtenerPorNombre("ADMIN");
 		assertNotNull(rolDevuelto);
-        assertEquals(rolNuevo.getNombreRol(), rolDevuelto.getNombreRol());
+		assertEquals(rolNuevo.getNombreRol(), rolDevuelto.getNombreRol());
 	}
 
 	@Test
@@ -44,9 +40,8 @@ public class RolDAOTest {
 		Rol rolActualizado = rolDAO.obtenerPorNombre(rolAModificar.getNombreRol());
 		assertNotNull(rolActualizado);
 		assertEquals(rolAModificar.getNombreRol(), rolActualizado.getNombreRol());
-
 	}
-	
+
 	@Test
 	public void testEliminarRol() {
 		Rol encargado = new Rol("ENCARGADO");
@@ -54,19 +49,20 @@ public class RolDAOTest {
 		rolDAO.borrar(encargado);
 		Rol rolBorrado = rolDAO.obtenerPorNombre(encargado.getNombreRol());
 		assertNull(rolBorrado);
-		
-
 	}
 
+	@Test
 	public void testBuscarRol() {
-
+		Rol rolBuscado = rolDAO.obtenerPorNombre("USUARIO");
+		assertNotNull(rolBuscado);
+		assertEquals(rolAModificar.getNombreRol(), rolBuscado.getNombreRol());
 	}
-	
-	 @AfterAll
-	    static void tearDown() {
-		 // Eliminar el rol creado en setUp
-		 	rolDAO.borrar(rolAModificar);
-		 	rolDAO.borrar(rolNuevo);
-	    }
+
+	@AfterAll
+	static void tearDown() {
+		// Eliminar el rol creado en setUp
+		rolDAO.borrar(rolAModificar);
+		rolDAO.borrar(rolNuevo);
+	}
 
 }
