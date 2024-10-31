@@ -21,6 +21,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Sugerencia {
 
+
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -38,4 +40,11 @@ public class Sugerencia {
 	@ManyToOne
 	@JoinColumn(name = "usuario_id", nullable = false)
 	private Usuario usuario;
+	
+	 public Sugerencia(String tipo, String descripcion, Date fecha, Usuario usuario) {
+	        this.tipo = tipo;
+	        this.descripcion = descripcion;
+	        this.fecha = fecha;
+	        this.usuario = usuario;
+	    }
 }
