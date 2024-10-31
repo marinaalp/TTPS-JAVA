@@ -52,19 +52,18 @@ public class UsuarioDAOTest {
 		assertEquals(usuarioNuevo.getEmail(), usuarioRetorno.getEmail());
 	}
 
-	/* No esta funcionando la modificacion
-	 * @Test public void testModificarUsuario() { usuarioAModificar =
-	 * usuarioDAO.recuperar(usuarioAModificar.getEmail());
-	 * usuarioAModificar.setApellido("Gomez");
-	 * usuarioDAO.actualizar(usuarioAModificar); Usuario usuarioActualizado =
-	 * usuarioDAO.recuperar(usuarioAModificar.getEmail());
-	 * assertNotNull(usuarioActualizado); assertEquals(usuarioAModificar.getDni(),
-	 * usuarioActualizado.getDni()); assertEquals(usuarioAModificar.getNombre(),
-	 * usuarioActualizado.getNombre());
-	 * assertEquals(usuarioAModificar.getApellido(),
-	 * usuarioActualizado.getApellido()); assertEquals(usuarioAModificar.getEmail(),
-	 * usuarioActualizado.getEmail()); }
-	 */
+	@Test
+	public void testModificarUsuario() {
+		usuarioAModificar = usuarioDAO.recuperar(usuarioAModificar.getId());
+		usuarioAModificar.setApellido("Gomez");
+		usuarioDAO.actualizar(usuarioAModificar);
+		Usuario usuarioActualizado = usuarioDAO.recuperar(usuarioAModificar.getId());
+		assertNotNull(usuarioActualizado);
+		assertEquals(usuarioAModificar.getDni(), usuarioActualizado.getDni());
+		assertEquals(usuarioAModificar.getNombre(), usuarioActualizado.getNombre());
+		assertEquals(usuarioAModificar.getApellido(), usuarioActualizado.getApellido());
+		assertEquals(usuarioAModificar.getEmail(), usuarioActualizado.getEmail());
+	}
 
 	@Test
 	public void testEliminarUsuario() {
@@ -74,20 +73,15 @@ public class UsuarioDAOTest {
 
 	}
 
-	/* No esta funcionando la busqueda
-	 * @Test public void testBuscarUsuario() { Usuario usuarioBuscado =
-	 * usuarioDAO.obtenerPorEmail(usuarioABuscar.getEmail());
-	 * assertNotNull(usuarioBuscado);
-	 * assertTrue(usuarioBuscado.getDni().equals(usuarioNuevo.getDni()));
-	 */
-		/*
-		 * assertEquals(usuarioNuevo.getNombre(), usuarioBuscado.getNombre());
-		 * assertEquals(usuarioNuevo.getApellido(), usuarioBuscado.getApellido());
-		 * assertEquals(usuarioNuevo.getEmail(), usuarioBuscado.getEmail());
-		 * }
-		 */
-
-	
+	@Test
+	public void testBuscarUsuario() {
+		Usuario usuarioBuscado = usuarioDAO.obtenerPorEmail(usuarioABuscar.getEmail());
+		assertNotNull(usuarioBuscado);
+		assertEquals(usuarioABuscar.getDni(), usuarioBuscado.getDni());
+		assertEquals(usuarioABuscar.getNombre(), usuarioBuscado.getNombre());
+		assertEquals(usuarioABuscar.getApellido(), usuarioBuscado.getApellido());
+		assertEquals(usuarioABuscar.getEmail(), usuarioBuscado.getEmail());
+	}
 
 	@AfterAll
 	static void tearDown() {
