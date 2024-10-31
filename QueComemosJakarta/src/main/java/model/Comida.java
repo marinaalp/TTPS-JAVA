@@ -36,7 +36,7 @@ public class Comida {
 	private String foto;
 
 	@ManyToOne
-	@JoinColumn(name = "menu_id")
+	@JoinColumn(name = "menu_id", nullable = true)
 	private Menu menu;
 
 }

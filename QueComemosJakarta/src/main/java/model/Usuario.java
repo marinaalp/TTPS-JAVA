@@ -51,5 +51,14 @@ public class Usuario {
 	@ManyToOne
 	@JoinColumn(name = "rol_id", nullable = false)
 	private Rol rol;
-
+	
+	public Usuario(String dni, String nombre, String apellido, String email, String clave, String foto, Rol rol) {
+		this.dni = dni;
+	    this.nombre = nombre;
+	    this.apellido = apellido;
+	    this.email = email;
+	    this.clave = clave;
+	    this.foto = foto;
+	    this.rol = rol;
+	}
 }
