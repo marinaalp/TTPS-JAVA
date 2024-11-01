@@ -13,9 +13,12 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Menu {
@@ -24,16 +27,16 @@ public class Menu {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
+	@NonNull
 	@Column(nullable = false)
 	private String nombre;
 
+	@NonNull
 	@Column(nullable = false)
 	private Float precio;
-	  
-	@OneToMany(mappedBy = "estructura", fetch = FetchType.LAZY, cascade = CascadeType.ALL) 
-    private List<Estructura> estructura;
-	  
-	  
-	 
+
+	@NonNull
+	@OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	private List<Estructura> estructura;
 
 }
