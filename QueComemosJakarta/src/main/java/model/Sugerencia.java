@@ -21,8 +21,6 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Sugerencia {
 
-
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;

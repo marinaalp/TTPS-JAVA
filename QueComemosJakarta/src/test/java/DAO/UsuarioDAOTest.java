@@ -87,7 +87,6 @@ public class UsuarioDAOTest {
 	static void tearDown() {
 		usuarioDAO.borrar(usuarioAModificar);
 		usuarioDAO.borrar(usuarioNuevo);
-		usuarioDAO.borrar(usuarioABorrar);
 		usuarioDAO.borrar(usuarioABuscar);
 		rolDAO.borrar(rolAsignado);
 
