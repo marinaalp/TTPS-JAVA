@@ -14,6 +14,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
@@ -24,16 +25,18 @@ public class Estructura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
+    @NonNull
     @Column(nullable = false)
     private String nombre;
 
-
-    @OneToMany(mappedBy = "estructura", cascade = CascadeType.ALL) 
+    @NonNull
+    @OneToMany(mappedBy = "estructura", cascade = CascadeType.MERGE)
     private List<Comida> comida;
 
     @ManyToOne
-    @JoinColumn(name = "menu_id", nullable = false)
-    private Menu estructura;
-    
-    
+    @JoinColumn(name = "menu_id")
+    private Menu menu;
+
 }
