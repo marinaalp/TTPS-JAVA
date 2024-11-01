@@ -34,9 +34,12 @@ public class Comida {
 
 	@Column(nullable = true)
 	private String foto;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "menu_id", nullable = true)
-	private Menu menu;
+	@JoinColumn(name = "estructura_id", nullable = true)
+	private Estructura estructura;
+	
+	
+	
 
 }

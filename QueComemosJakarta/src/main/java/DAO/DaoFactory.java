@@ -4,6 +4,7 @@ import DAO_Interfaces.RolDAO;
 import DAO_Interfaces.UsuarioDAO;
 import DAO_Interfaces.MenuDAO;
 import DAO_Interfaces.ComidaDAO;
+import DAO_Interfaces.EstructuraDAO;
 import DAO_Interfaces.PedidoDAO;
 import DAO_Interfaces.SugerenciaDAO;
 
@@ -11,6 +12,7 @@ import DAOHibernateJPA.RolDAOHibernateJPA;
 import DAOHibernateJPA.UsuarioDAOHibernateJPA;
 import DAOHibernateJPA.MenuDAOHibernateJPA;
 import DAOHibernateJPA.ComidaDAOHibernateJPA;
+import DAOHibernateJPA.EstructuraDAOHibernateJPA;
 import DAOHibernateJPA.PedidoDAOHibernateJPA;
 import DAOHibernateJPA.SugerenciaDAOHibernateJPA;
 
@@ -39,6 +41,10 @@ public class DaoFactory {
 	
 	public static SugerenciaDAO getSugerenciaDAO() {
 		return new SugerenciaDAOHibernateJPA();
+	}
+	
+	public static EstructuraDAO getEstructuraDAO() {
+		return new EstructuraDAOHibernateJPA();
 	}
 	
 
