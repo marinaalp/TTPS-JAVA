@@ -100,7 +100,6 @@ public class MenuDAOTest {
 		menuDAO.borrar(menuNuevo);
 		menuDAO.borrar(menuAModificar);
 		menuDAO.borrar(menuABuscar);
-		menuDAO.borrar(menuABorrar);
 		estructuraDAO.borrar(estructuraEntrada);
 		estructuraDAO.borrar(estructuraPrincipal);
 		estructuraDAO.borrar(estructuraPostre);

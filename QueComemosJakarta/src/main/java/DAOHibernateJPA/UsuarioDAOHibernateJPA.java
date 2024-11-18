@@ -37,6 +37,7 @@ public class UsuarioDAOHibernateJPA extends GenericDAOHibernateJPA<Usuario> impl
 
 			Usuario usuario = em.find(Usuario.class, entity.getId());
 			Hibernate.initialize(usuario.getSugerencias());
+			Hibernate.initialize(usuario.getPedidos());
 
 			em.remove(usuario); // Eliminar el usuario
 
